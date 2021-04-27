@@ -155,19 +155,22 @@ def barGraphDist(df, column_to_sort, y_label_str, title_str):
         vals = -1*np.flip(vals)
     pop_mean = np.mean(vals)
 
-    x_vals = np.linspace(0, vals.size, 10)
+    x_vals = np.linspace(0, 50, 5)
     x_val_str = []
-    for i in range(0,x_vals.size):
-        x_val_str.append(str(int(i*10)))
+    for i in x_vals:
+        x_val_str.append(str(int(i)))
+
+    vals = vals[:50]
 
     fig = plt.figure(figsize=(12, 6))
-    plt.bar(np.arange(vals.size),vals)
+    plt.bar(np.arange(50),vals)
     plt.ylabel(y_label_str, fontsize=18)
-    plt.xlabel("% of Users", fontsize=18)
+    plt.xlabel("Top Number of Users", fontsize=18)
     plt.xticks(x_vals, x_val_str, fontsize=18)
     plt.yticks(fontsize=15)
-    plt.title(title_str+"; Mean: "+str(round(100*pop_mean,1)), fontsize=18)
+    plt.title("Top 50 Users - "+title_str+"; Mean: "+str(round(pop_mean,1)), fontsize=18)
     plt.show()
+
 
 
 # contract_liquidity_pool = '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
